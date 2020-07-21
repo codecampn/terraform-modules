@@ -27,20 +27,9 @@ jobs:
         if: ${{ always() }}
         with:
           script: |
-
-            function data {
-              if (steps.validate.outputs.stdout) {
-               return `#### Terraform Validation ${{ steps.validate.outputs.stdout }}`
-              }
-
-             if (steps.validate.outputs.stderr) {
-                return `#### Terraform Validation:Errors ${{ steps.validate.outputs.stderr }}`
-              }
-            }
-
             const output = `#### Terraform Initialization \`${{ steps.init.outcome }}\`
-            ${{data()}}
-
+            #### Terraform Validation ${{ steps.validate.outputs.stdout }}
+            #### Terraform Validation:Errors ${{ steps.validate.outputs.stderr }}
             actor: @${{ github.actor }}`;
 
             github.issues.createComment({
