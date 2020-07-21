@@ -2,7 +2,7 @@
 name: Review new modules changes
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
