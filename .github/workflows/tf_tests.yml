@@ -28,9 +28,9 @@ jobs:
         with:
           script: |
             const output = `#### Terraform Initialization \`${{ steps.init.outcome }}\`
-            #### Terraform Validation \`${{ steps.validate.outputs.stdout }}\`
+            #### Terraform Validation ${{ steps.validate.outputs.stdout }}
 
-            *actor: @${{ github.actor }}`;
+            actor: @${{ github.actor }}`;
 
             github.issues.createComment({
               issue_number: context.issue.number,
