@@ -27,11 +27,10 @@ jobs:
         if: ${{ always() }}
         with:
           script: |
-            const output = `#### Terraform Format and Style \`${{ steps.fmt.outcome }}\`
-            #### Terraform Initialization \`${{ steps.init.outcome }}\`
-            #### Terraform Validation ${{ steps.validate.outputs.stdout }}
+            const output = `#### Terraform Initialization \`${{ steps.init.outcome }}\`
+            #### Terraform Validation \`${{ steps.validate.outputs.stdout }}\`
 
-            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            *actor: @${{ github.actor }}`;
 
             github.issues.createComment({
               issue_number: context.issue.number,
