@@ -13,6 +13,7 @@ There are some examples in the examples-folder that you can use as Template.
 - [ ] Describe the Output Interface
 - [ ] Provide some Additional information about the Module
 - [ ] Provide some rudimental Roadmap (When the Module is completed, Mark as completed)
+- [ ] testfile exist
 
 ### Create a new Module
 
@@ -23,6 +24,10 @@ Create a folder in the provider you want to use AWS / Azure / ... e.g. `my-fancy
 Place the Terrafrom-Files here! If needed create a src folder and put some code there.
 
 Create a PR and collect 2 approves from some fancy Codecampers!
+
+### Create the Test-File
+
+Place your Module in the test-folder
 
 ## Ask for a Module
 

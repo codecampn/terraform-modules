@@ -2,7 +2,7 @@
 name: Review new modules changes
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
@@ -28,9 +28,9 @@ jobs:
         with:
           script: |
             const output = `#### Terraform Initialization \`${{ steps.init.outcome }}\`
-            #### Terraform Validation \`${{ steps.validate.outputs.stdout }}\`
-
-            *actor: @${{ github.actor }}`;
+            #### Terraform Validation ${{ steps.validate.outputs.stdout }}
+            #### Terraform Validation:Errors ${{ steps.validate.outputs.stderr }}
+            actor: @${{ github.actor }}`;
 
             github.issues.createComment({
               issue_number: context.issue.number,
