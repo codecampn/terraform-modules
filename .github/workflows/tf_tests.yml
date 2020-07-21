@@ -28,7 +28,7 @@ jobs:
         with:
           script: |
 
-            const data = () => {
+            function data {
               if (steps.validate.outputs.stdout) {
                return `#### Terraform Validation ${{ steps.validate.outputs.stdout }}`
               }
