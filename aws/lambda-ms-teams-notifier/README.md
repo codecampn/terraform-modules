@@ -1,4 +1,4 @@
-# Terraform Module: MS Teams Notifier
+# Terraform Module: MS Teams Notifier for AWS Cloudwatch Alarms
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ This function is just a notifier which pushes Cloudwatch Alarms messages (trigge
 ## Usage
 ```
 module "ms-team-notifier-lambda" {
-    source = "git@github.com:codecampn/terraform-modules-aws-lambda-ms-teams-notifier.git"
+    source = "git::https://github.com/codecampn/terraform-modules.git//aws/lambda-ms-teams-notifier"
     enabled = true
     
     project = "some-project"
