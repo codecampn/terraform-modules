@@ -19,12 +19,6 @@ variable "stage" {
 /*--------------------------------------------------------------
    Lambda related
 --------------------------------------------------------------*/
-variable "ecs_resource_suffix" {
-  description = "the resource namimg suffix for policy attachement; '*' if all resources in ECS can be accessed through lambda"
-  type        = string
-  default     = "*"
-}
-
 variable "ecs_cluster" {
   description = "ECS cluster name"
   type        = string
