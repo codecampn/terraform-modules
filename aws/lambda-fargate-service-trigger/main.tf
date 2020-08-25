@@ -35,8 +35,8 @@ resource "aws_lambda_function" "trigger" {
 
   environment {
     variables = {
-      ECS_CLUSTER = var.ecs_cluster
-      ECS_SERVICE_NAMES = var.ecs_service_names
+      ECS_CLUSTER       = var.ecs_cluster
+      ECS_SERVICE_NAMES = "${jsonencode(var.ecs_service_names)}"
     }
   }
 }
