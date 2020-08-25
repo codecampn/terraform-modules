@@ -1,5 +1,5 @@
 module "aws-lambda-fargate-service-trigger" {
-  source                     = "../aws/aws-lambda-fargate-service-trigger"
+  source                     = "../aws/lambda-fargate-service-trigger"
   project                    = "test"
   stage                      = "test"
   ecs_cluster                = "test_cluster"
