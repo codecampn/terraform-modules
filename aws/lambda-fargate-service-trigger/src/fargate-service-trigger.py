@@ -18,13 +18,17 @@ def lambda_handler(event, context):
   if status == "start":
     desired_count = 1
 
- for service in os.environ.get("ECS_SERVICE_NAMES"):
-   try:
-     logger.info("{0} is updated to desiredCount={1}".format(service, str(desired_count)))
-     response = client.update_service(
-      cluster=os.environ.get("ECS_CLUSTER"),
-      service=service,
-      desiredCount=desired_count
-     )
-   except Exception as exc:
-      logger.error("Error in updating service with desiredCount={0} with message {1}".format(str(desired_count), str(exc)))
+  if os.environ.get("ECS_SERVICE_NAMES"):
+    for service in os.environ.get("ECS_SERVICE_NAMES"):
+      try:
+        logger.info("{0} is updated to desiredCount={1}".format(service, str(desired_count)))
+        response = client.update_service(
+          cluster=os.environ.get("ECS_CLUSTER"),
+          service=service,
+          desiredCount=desired_count
+        )
+      except Exception as exc:
+        logger.error("Error in updating service with desiredCount={0} with message {1}".format(str(desired_count), str(exc)))
+  else:
+    logger.info("no service to update")
+    return
