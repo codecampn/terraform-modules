@@ -82,7 +82,7 @@ resource "aws_iam_policy" "trigger" {
       "Resource": "arn:aws:logs:*:*:*"
     },
     {
-      "Sid": "ECSServicePolicy
+      "Sid": "ECSServicePolicy",
       "Effect": "Allow",
       "Action": [
         "ecs:describeServices",
