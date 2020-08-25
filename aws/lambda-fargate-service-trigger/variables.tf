@@ -16,6 +16,10 @@ variable "stage" {
   type        = string
 }
 
+variable "region" {
+  description = "the region used for this stack"
+  type        = string
+}
 /*--------------------------------------------------------------
    Lambda related
 --------------------------------------------------------------*/
