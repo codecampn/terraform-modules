@@ -32,4 +32,5 @@ def lambda_handler(event, context):
         logger.error("Error in updating service with desiredCount={0} with message {1}".format(str(desired_count), str(exc)))
   else:
     logger.info("no service to update")
-    return
+  
+  return
