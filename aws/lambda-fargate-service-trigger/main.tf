@@ -108,7 +108,7 @@ resource "aws_lambda_permission" "start" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.trigger[0].function_name
   principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule[0].start.arn
+  source_arn    = aws_cloudwatch_event_rule.start[0].arn
 }
 
 resource "aws_lambda_permission" "stop" {
@@ -117,7 +117,7 @@ resource "aws_lambda_permission" "stop" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.trigger[0].function_name
   principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.stop.arn
+  source_arn    = aws_cloudwatch_event_rule.stop[0].arn
 }
 
 /*--------------------------------------------------------------
