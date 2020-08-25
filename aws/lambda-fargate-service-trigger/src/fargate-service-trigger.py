@@ -10,7 +10,8 @@ logger.setLevel(logging.INFO)
 def lambda_handler(event, context):
   logger.info("Event: " + str(event))
   status = event.get("status", "")
-  if status == "" or status or not os.environ.get("ECS_SERVICE_NAMES"):
+  ecs_service_names = json.loads(os.environ.get("ECS_SERVICE_NAMES"))
+  if status == "" or status or not ecs_service_names:
     logger.info("nothing to do here")
     return
 
@@ -18,8 +19,8 @@ def lambda_handler(event, context):
   if status == "start":
     desired_count = 1
 
-  if os.environ.get("ECS_SERVICE_NAMES"):
-    for service in os.environ.get("ECS_SERVICE_NAMES"):
+  if ecs_service_names:
+    for service in ecs_service_names:
       try:
         logger.info("{0} is updated to desiredCount={1}".format(service, str(desired_count)))
         response = client.update_service(
