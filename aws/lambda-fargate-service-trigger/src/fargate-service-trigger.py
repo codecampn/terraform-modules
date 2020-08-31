@@ -1,4 +1,5 @@
 import boto3
+import json
 import logging
 import os
 
@@ -11,7 +12,7 @@ def lambda_handler(event, context):
   logger.info("Event: " + str(event))
   status = event.get("status", "")
   ecs_service_names = json.loads(os.environ.get("ECS_SERVICE_NAMES"))
-  if status == "" or status or not ecs_service_names:
+  if status == "" or not status or not ecs_service_names:
     logger.info("nothing to do here")
     return
 
