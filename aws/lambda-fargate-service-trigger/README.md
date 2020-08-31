@@ -26,6 +26,7 @@ module "ecs_fargate_service_trigger" {
     
     project = "some-project"
     stage = "dev"
+    region = "eu-west-1"
     ecs_cluster = "a-fancy-cluster-name"
     ecs_service_names = [
       "fancy-service-1",
@@ -44,6 +45,7 @@ Variable | Description | Default Value
 project | the unique prefix you use for your lambda's function name, f.e. the project name | n/a
 enabled | true, if the module shall be enabled | true
 stage | the stage this stack is deployed to | n/a 
+region | the region your fargate cluster is deployed to | n/a
 ecs_cluster | ECS cluster name | n/a
 ecs_service_names | array of services which need to be updated | n/a
 start_scheduled_expression | the cron job expression for starting ECS Fargate services | n/a
