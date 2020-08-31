@@ -21,15 +21,19 @@ This stack enabels start and/or stop triggers for ECS Fargate services mainly fo
 ## Usage
 ```
 module "ecs_fargate_service_trigger" {
-    source = "git::https://github.com/codecampn/terraform-modules.git//aws/ecs-fargate-service-trigger"
+    source = "git::https://github.com/codecampn/terraform-modules.git//aws/lambda-fargate-service-trigger"
     enabled = true
     
     project = "some-project"
     stage = "dev"
-    ecs_resource_suffix = "*-dev"
-    start_scheduled_expression = "cron(0 4 * * ? *)" # UTC; CEST(UTC +2): 6:00 
+    ecs_cluster = "a-fancy-cluster-name"
+    ecs_service_names = [
+      "fancy-service-1",
+      "fancy-service-2"
+    ]
+    start_scheduled_expression = "cron(0 4 * * 1-5 *)" # UTC; CEST(UTC +2): 6:00 Monday 'til Friday
     start_trigger_enabled = true
-    stop_scheduled_expression = "cron(0 20 * * ? *)" # UTC; CEST(UTC +2): 22:00 
+    stop_scheduled_expression = "cron(0 20 * * 1-5 *)" # UTC; CEST(UTC +2): 22:00 Monday 'til Friday
     stop_trigger_enabled = true
   }
 ```
