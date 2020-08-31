@@ -104,7 +104,7 @@ resource "aws_iam_policy_attachment" "trigger" {
 
 resource "aws_lambda_permission" "start" {
   count         = var.enabled ? 1 : 0
-  statement_id  = "AllowExecutionFromCloudWatch"
+  statement_id  = "AllowExecutionFromCloudWatchFargateStart"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.trigger[0].function_name
   principal     = "events.amazonaws.com"
@@ -113,7 +113,7 @@ resource "aws_lambda_permission" "start" {
 
 resource "aws_lambda_permission" "stop" {
   count         = var.enabled ? 1 : 0
-  statement_id  = "AllowExecutionFromCloudWatch"
+  statement_id  = "AllowExecutionFromCloudWatchFargateStop"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.trigger[0].function_name
   principal     = "events.amazonaws.com"
