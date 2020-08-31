@@ -125,7 +125,7 @@ resource "aws_lambda_permission" "stop" {
 --------------------------------------------------------------*/
 resource "aws_cloudwatch_event_rule" "start" {
   count       = var.enabled ? 1 : 0
-  name        = join("-", [var.project, local.stack_name])
+  name        = join("-", [var.project, local.stack_name, "start"])
   description = "triggers start of ECS fargate services"
 
   schedule_expression = var.start_scheduled_expression
@@ -142,7 +142,7 @@ resource "aws_cloudwatch_event_target" "start" {
 
 resource "aws_cloudwatch_event_rule" "stop" {
   count       = var.enabled ? 1 : 0
-  name        = join("-", [var.project, local.stack_name])
+  name        = join("-", [var.project, local.stack_name, "stop"])
   description = "triggers stop of ECS fargate services"
 
   schedule_expression = var.stop_scheduled_expression
