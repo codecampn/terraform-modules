@@ -86,9 +86,9 @@ resource "aws_iam_policy" "trigger" {
       "Effect": "Allow",
       "Action": [
         "ecs:describeServices",
-        "ecs:updateServices",
+        "ecs:updateServices"
       ],
-      "Resource": ${join(":", ["arn:aws:ecs", var.region, data.aws_caller_identity.current.account_id, "cluster/${var.ecs_cluster}"])}
+      "Resource": "${join(":", ["arn:aws:ecs", var.region, data.aws_caller_identity.current.account_id, "cluster/${var.ecs_cluster}"])}"
     }
   ]
 }

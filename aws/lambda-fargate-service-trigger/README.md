@@ -21,15 +21,20 @@ This stack enabels start and/or stop triggers for ECS Fargate services mainly fo
 ## Usage
 ```
 module "ecs_fargate_service_trigger" {
-    source = "git::https://github.com/codecampn/terraform-modules.git//aws/ecs-fargate-service-trigger"
+    source = "git::https://github.com/codecampn/terraform-modules.git//aws/lambda-fargate-service-trigger"
     enabled = true
     
     project = "some-project"
     stage = "dev"
-    ecs_resource_suffix = "*-dev"
-    start_scheduled_expression = "cron(0 4 * * ? *)" # UTC; CEST(UTC +2): 6:00 
+    region = "eu-west-1"
+    ecs_cluster = "a-fancy-cluster-name"
+    ecs_service_names = [
+      "fancy-service-1",
+      "fancy-service-2"
+    ]
+    start_scheduled_expression = "cron(0 4 * * 1-5 *)" # UTC; CEST(UTC +2): 6:00 Monday 'til Friday
     start_trigger_enabled = true
-    stop_scheduled_expression = "cron(0 20 * * ? *)" # UTC; CEST(UTC +2): 22:00 
+    stop_scheduled_expression = "cron(0 20 * * 1-5 *)" # UTC; CEST(UTC +2): 22:00 Monday 'til Friday
     stop_trigger_enabled = true
   }
 ```
@@ -40,6 +45,7 @@ Variable | Description | Default Value
 project | the unique prefix you use for your lambda's function name, f.e. the project name | n/a
 enabled | true, if the module shall be enabled | true
 stage | the stage this stack is deployed to | n/a 
+region | the region your fargate cluster is deployed to | n/a
 ecs_cluster | ECS cluster name | n/a
 ecs_service_names | array of services which need to be updated | n/a
 start_scheduled_expression | the cron job expression for starting ECS Fargate services | n/a
