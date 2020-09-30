@@ -1,5 +1,5 @@
 module "azure_webapp" {
-  source              = "../azure/webapp"
+  source              = "../azure/hosting-webapp"
   app_name            = "test"
   location            = "test"
   environment         = "test"
