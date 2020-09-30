@@ -14,7 +14,7 @@
 
 ## Scope
 
-This module provides a Storage-Account and a CDN-Endpoint to provide a webapp to the world
+This module provides a storage account where the application can be stored and a CDN endpoint to make the web application available to the world.
 
 ## Used Services & Features
 
