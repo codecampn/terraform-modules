@@ -23,18 +23,18 @@ jobs:
         run: terraform validate -no-color
         working-directory: tests
 
-      - uses: actions/github-script@v2
-        if: ${{ always() }}
-        with:
-          script: |
-            const output = `#### Terraform Initialization \`${{ steps.init.outcome }}\`
-            #### Terraform Validation \`${{ steps.validate.outputs.stdout }}\`
-            #### Terraform Validation:Errors \`${{ steps.validate.outputs.stderr }}\`
-            actor: @${{ github.actor }}`;
-
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            })
+ #     - uses: actions/github-script@v2
+  #      if: ${{ always() }}
+   #     with:
+    #      script: |
+     #       const output = `#### Terraform Initialization \`${{ steps.init.outcome }}\`
+      #      #### Terraform Validation \`${{ steps.validate.outputs.stdout }}\`
+       #     #### Terraform Validation:Errors \`${{ steps.validate.outputs.stderr }}\`
+        #    actor: @${{ github.actor }}`;
+#
+ #           github.issues.createComment({
+  #            issue_number: context.issue.number,
+   #           owner: context.repo.owner,
+    #          repo: context.repo.repo,
+     #         body: output
+      #      })
